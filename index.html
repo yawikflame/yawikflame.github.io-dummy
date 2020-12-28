@@ -21,14 +21,24 @@
       // when a message is received from the page code
       window.onmessage = (event) => {
         if (event.data) {
-          let ipOwner = "";
-          if (event.data === "84.111.60.166") {
-            ipOwner = "yaron's ip";
-          } else if (event.data === "87.71.23.122") {
-            ipOwner = "yura's ip";
-          }
+          // let ipOwner = "";
+          // if (event.data === "84.111.60.166") {
+          //   ipOwner = "yaron's ip";
+          // } else if (event.data === "87.71.23.122") {
+          //   ipOwner = "yura's ip";
+          // }
+
+          let xmlhttp = new XMLHttpRequest();
+          xmlhttp.open(
+            "GET",
+            `https://www.telemunity.com/wix-api/ip2params/${event.data}`,
+            true
+          );
+          xmlhttp.send();
+
           window.parent.postMessage(
-            ipOwner,
+            "",
+            // ipOwner,
             "https://telemunity.com/MOVING_RATES_3"
             // "https://yawikflame3.wixsite.com/gotmovers-horizontal"
           );
