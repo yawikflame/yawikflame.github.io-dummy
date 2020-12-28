@@ -31,7 +31,7 @@
           let xmlhttp = new XMLHttpRequest();
           let res = "";
           xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE) {
               res = xmlhttp.responseText;
             }
           };
