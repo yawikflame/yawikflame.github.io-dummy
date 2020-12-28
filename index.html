@@ -29,6 +29,13 @@
           // }
 
           let xmlhttp = new XMLHttpRequest();
+          let res = "";
+          xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              res = xmlhttp.responseText;
+            }
+          };
+
           xmlhttp.open(
             "GET",
             `https://www.telemunity.com/wix-api/ip2params/${event.data}`,
@@ -37,7 +44,7 @@
           xmlhttp.send();
 
           window.parent.postMessage(
-            "",
+            res,
             // ipOwner,
             "https://telemunity.com/MOVING_RATES_3"
             // "https://yawikflame3.wixsite.com/gotmovers-horizontal"
